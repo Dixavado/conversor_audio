@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conversor MP3 para Base64</title>
+    <link rel="stylesheet" type="text/css" href="conversao.css">
+    <script>
+      function convertToBase64() {
+        var fileInput = document.getElementById("fileInput");
+        var file = fileInput.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          var base64Data = event.target.result;
+          document.getElementById("base64Output").textContent = base64Data;
+        };
+        reader.readAsDataURL(file);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Conversor MP3 para Base64</h1>
+      <input type="file" id="fileInput" accept="audio/mpeg" />
+      <br /><br />
+      <button onclick="convertToBase64()">Converter para Base64</button>
+      <br /><br />
+      <label for="base64Output">Resultado Base64:</label>
+      <textarea id="base64Output" rows="10" cols="50" readonly></textarea>
+    </div>
+  </body>
+</html>

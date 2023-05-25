@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conversor Base64 para MP3</title>
+    <link rel="stylesheet" type="text/css" href="conversao.css">
+    <script>
+      function sendBase64() {
+        var base64Data = document.getElementById("base64Input").value;
+        fetch("/api/64-to-mp3", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ audio: base64Data }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Erro ao converter o arquivo MP3");
+            }
+            return response.blob();
+          })
+          .then((blob) => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "audio.mp3";
+            link.click();
+            URL.revokeObjectURL(url);
+          })
+          .catch((error) => {
+            console.error(error);
+            alert(error.message);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Conversor Base64 para MP3</h1>
+      <label for="base64Input">Insira o valor em base64:</label>
+      <br>
+      <textarea id="base64Input" rows="10" cols="50"></textarea>
+      <br /><br />
+      <button onclick="sendBase64()">Enviar</button>
+    </div>
+  </body>
+</html>

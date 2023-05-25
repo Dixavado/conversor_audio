@@ -1,0 +1,33 @@
+{
+  "name": "api_consulta-master",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Dixavado",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg/core": "^0.11.0",
+    "@ffmpeg/ffmpeg": "^0.11.6",
+    "audio": "^1.2.0",
+    "axios": "^1.4.0",
+    "binlookup": "^2.0.1",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "sox": "^0.1.0",
+    "sox-audio": "^0.3.0",
+    "sox-stream": "^2.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
